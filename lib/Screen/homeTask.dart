@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../model/task.dart';
+
 class Hometask extends StatefulWidget {
   const Hometask({super.key});
 
@@ -10,6 +12,26 @@ class Hometask extends StatefulWidget {
 class _HometaskState extends State<Hometask> {
   late final getData = ModalRoute.of(context)!.settings.arguments;
   int index = 0;
+  bool checkBox = false;
+
+  List<Task> tasks = [];
+
+  void addTask(Task newTask) {
+    setState(() {
+      tasks.add(newTask);
+    });
+  }
+
+  void checkCompleted(int index) {
+    setState(() {
+      tasks[index].isCompleted = !tasks[index].isCompleted;
+    });
+  }
+
+  String title() {
+    print("object");
+    return 'Title';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +39,7 @@ class _HometaskState extends State<Hometask> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "My Todo App",
+          title(),
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
         ),
         actions: [
@@ -26,15 +48,33 @@ class _HometaskState extends State<Hometask> {
         ],
         backgroundColor: Colors.deepPurple,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          // child: ListView.builder(itemBuilder: (context, index))
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: ListView.builder(
+          itemCount: tasks.length,
+          itemBuilder: (context, index) {
+            return boxtask(
+              tasks[index].title,
+              tasks[index].description,
+              tasks[index].isImportant,
+              tasks[index].isCompleted,
+              index,
+            );
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
-          Navigator.pushNamed(context, '/addtask');
+          final result = await Navigator.pushNamed(context, '/addtask');
+          if (result != null && result is Map<String, dynamic>) {
+            addTask(
+              Task(
+                title: result['title'],
+                description: result['descrips'],
+                isImportant: result['isImportant'],
+              ),
+            );
+          }
         },
         label: const Text('Add Task'),
         icon: const Icon(Icons.add),
@@ -42,7 +82,13 @@ class _HometaskState extends State<Hometask> {
     );
   }
 
-  Container boxtask(String title, String subTitle, [bool check = false]) {
+  Container boxtask(
+    String title,
+    String subTitle,
+    bool important,
+    bool checkbox,
+    int index,
+  ) {
     return Container(
       height: 70,
       width: double.infinity,
@@ -51,13 +97,16 @@ class _HometaskState extends State<Hometask> {
         color: Colors.deepPurpleAccent,
       ),
       child: ListTile(
-        leading: Checkbox(value: false, onChanged: (value) => () {}),
+        leading: Checkbox(
+          value: checkbox,
+          onChanged: (value) => checkCompleted(index),
+        ),
         title: Text(title),
         subtitle: Text(subTitle),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            check
+            important
                 ? Icon(Icons.star, color: Colors.yellow)
                 : Icon(Icons.star_outline),
             SizedBox(width: 16),

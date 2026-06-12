@@ -9,6 +9,16 @@ class AddTask extends StatefulWidget {
 
 class _AddTaskState extends State<AddTask> {
   bool _isImportant = false;
+  final _titleController = TextEditingController();
+  final descripstionController = TextEditingController();
+
+  void saveTask() {
+    Navigator.pop(context, {
+      'title': _titleController.text,
+      'descrips': descripstionController.text,
+      'isImportant': _isImportant,
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +62,7 @@ class _AddTaskState extends State<AddTask> {
                 ),
               ),
               TextFormField(
+                controller: _titleController,
                 maxLength: 50,
                 decoration: InputDecoration(
                   hintText: "Enter Task title",
@@ -97,6 +108,7 @@ class _AddTaskState extends State<AddTask> {
                 ),
               ),
               TextFormField(
+                controller: descripstionController,
                 maxLength: 200,
                 maxLines: 4,
                 decoration: InputDecoration(
@@ -180,7 +192,7 @@ class _AddTaskState extends State<AddTask> {
                     Icons.save,
                     color: Color.fromARGB(255, 255, 255, 255),
                   ),
-                  onPressed: () {},
+                  onPressed: saveTask,
                   label: Text(
                     style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                     "Save Task",
