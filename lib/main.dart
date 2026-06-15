@@ -1,27 +1,27 @@
-import 'package:demo_app/Screen/homeTask.dart';
-import 'package:demo_app/routers/page_routers.dart';
-import 'package:demo_app/routers/route_names.dart';
 import 'package:flutter/material.dart';
+import 'screen/items_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final routNames = RouteNames();
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Thư Viện Hình Xăm',
       debugShowCheckedModeBanner: false,
-      routes: pageRoute,
-      home: Hometask(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF6C63FF),
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
+        fontFamily: 'Roboto',
+      ),
+      home: const ItemsScreen(),
     );
   }
 }
