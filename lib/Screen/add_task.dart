@@ -24,15 +24,15 @@ class _AddTaskState extends State<AddTask> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ADD New Task"),
+        title: const Text("ADD New Task"),
         backgroundColor: const Color.fromARGB(255, 225, 192, 252),
         centerTitle: true,
-        titleTextStyle: TextStyle(fontSize: 25, color: Colors.black),
+        titleTextStyle: const TextStyle(fontSize: 25, color: Colors.black),
         // leading: Icon(Icons.close, color: Colors.black),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               Center(
@@ -48,16 +48,16 @@ class _AddTaskState extends State<AddTask> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 alignment: Alignment.topLeft,
-                margin: EdgeInsets.only(bottom: 10),
-                child: Text(
+                margin: const EdgeInsets.only(bottom: 10),
+                child: const Text(
                   "Task Title",
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 78, 78, 78),
+                    color: Color.fromARGB(255, 78, 78, 78),
                   ),
                 ),
               ),
@@ -66,7 +66,7 @@ class _AddTaskState extends State<AddTask> {
                 maxLength: 50,
                 decoration: InputDecoration(
                   hintText: "Enter Task title",
-                  prefixIcon: Icon(Icons.title),
+                  prefixIcon: const Icon(Icons.title),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -80,7 +80,7 @@ class _AddTaskState extends State<AddTask> {
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.red),
+                    borderSide: const BorderSide(color: Colors.red),
                   ),
                 ),
                 validator: (value) {
@@ -94,16 +94,16 @@ class _AddTaskState extends State<AddTask> {
                   return null;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 alignment: Alignment.topLeft,
-                margin: EdgeInsets.only(bottom: 10),
-                child: Text(
+                margin: const EdgeInsets.only(bottom: 10),
+                child: const Text(
                   "Description (Optional)",
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 78, 78, 78),
+                    color: Color.fromARGB(255, 78, 78, 78),
                   ),
                 ),
               ),
@@ -116,11 +116,11 @@ class _AddTaskState extends State<AddTask> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  prefixIcon: Icon(Icons.description),
+                  prefixIcon: const Icon(Icons.description),
                   // counterText: "0/50",
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -130,7 +130,7 @@ class _AddTaskState extends State<AddTask> {
                 child: Container(
                   height: 70,
                   width: double.infinity,
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 255, 255, 255),
                     borderRadius: BorderRadius.circular(10),
@@ -145,8 +145,8 @@ class _AddTaskState extends State<AddTask> {
                         color: _isImportant ? Colors.amber : Colors.grey,
                         size: 30,
                       ),
-                      SizedBox(width: 10),
-                      Column(
+                      const SizedBox(width: 10),
+                      const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -154,19 +154,19 @@ class _AddTaskState extends State<AddTask> {
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
-                              color: const Color.fromARGB(255, 0, 0, 0),
+                              color: Color.fromARGB(255, 0, 0, 0),
                             ),
                           ),
                           Text(
                             "This task will be highlighted",
                             style: TextStyle(
                               fontSize: 12,
-                              color: const Color.fromARGB(255, 124, 124, 124),
+                              color: Color.fromARGB(255, 124, 124, 124),
                             ),
                           ),
                         ],
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Switch(
                         value: _isImportant,
                         onChanged: (value) {
@@ -179,27 +179,27 @@ class _AddTaskState extends State<AddTask> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 height: 50,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Color.fromARGB(255, 118, 53, 223),
+                  color: const Color.fromARGB(255, 118, 53, 223),
                 ),
                 child: TextButton.icon(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.save,
                     color: Color.fromARGB(255, 255, 255, 255),
                   ),
                   onPressed: saveTask,
-                  label: Text(
+                  label: const Text(
                     style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                     "Save Task",
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Container(
                 height: 50,
                 width: double.infinity,
@@ -210,12 +210,12 @@ class _AddTaskState extends State<AddTask> {
                   ),
                 ),
                 child: TextButton.icon(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.cancel,
                     color: Color.fromARGB(255, 118, 53, 223),
                   ),
                   onPressed: () {},
-                  label: Text(
+                  label: const Text(
                     style: TextStyle(color: Color.fromARGB(255, 118, 53, 223)),
                     "Cancel",
                   ),

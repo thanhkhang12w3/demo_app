@@ -40,9 +40,9 @@ class _HometaskState extends State<Hometask> {
         centerTitle: true,
         title: Text(
           title(),
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
         ),
-        actions: [
+        actions: const [
           Text("👆 ", style: TextStyle(fontSize: 24)),
           SizedBox(width: 12),
         ],
@@ -107,10 +107,10 @@ class _HometaskState extends State<Hometask> {
           mainAxisSize: MainAxisSize.min,
           children: [
             important
-                ? Icon(Icons.star, color: Colors.yellow)
-                : Icon(Icons.star_outline),
-            SizedBox(width: 16),
-            Icon(Icons.delete),
+                ? const Icon(Icons.star, color: Colors.yellow)
+                : const Icon(Icons.star_outline),
+            const SizedBox(width: 16),
+            const Icon(Icons.delete),
           ],
         ),
       ),
